@@ -75,7 +75,7 @@ Parser.prototype.online = function(line){
   var i = line.indexOf(' :');
 
   if (~i) {
-    var params = line.slice(, i);
+    var params = line.slice(1, i);
     line = line.slice(i + 2);
   }
 
