@@ -4,7 +4,6 @@
  */
 
 var debug = require('debug')('slate-irc-parser');
-var replies = require('irc-replies');
 var linewise = require('linewise');
 var Stream = require('stream');
 
