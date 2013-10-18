@@ -1,7 +1,7 @@
 {
-  "name": "slate-irc",
+  "name": "slate-irc-parser",
   "version": "0.0.1",
-  "repository": "slate/slate-irc",
+  "repository": "slate/slate-irc-parser",
   "description": "Low-level general purpose IRC client",
   "keywords": [
     "irc",
