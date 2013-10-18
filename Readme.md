@@ -12,7 +12,7 @@ $ npm install slate-irc-parser
 ## Example
 
 ```js
-var Parser = require('..');
+var Parser = require('slate-irc-parser');
 var net = require('net');
 
 var client = net.connect({
