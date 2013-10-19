@@ -19,8 +19,14 @@ describe('Parser', function(){
         case 1:
           assert('' === msg.prefix);
           assert('ERROR' == msg.command);
-          assert('' == msg.params);
+          assert('' === msg.params);
           assert('Closing Link: 127.0.0.1 (Connection timed out)' == msg.trailing);
+          break;
+        case 2:
+          assert('tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net' == msg.prefix);
+          assert('JOIN' == msg.command);
+          assert('#express' == msg.params);
+          assert('' === msg.trailing);
           done();
           break;
       }
@@ -28,5 +34,6 @@ describe('Parser', function(){
 
     parser.write(':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n');
     parser.write('ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n');
+    parser.write(':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n');
   })
 })

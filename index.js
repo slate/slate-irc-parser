@@ -72,11 +72,9 @@ Parser.prototype.online = function(line){
 
   // params
   var i = line.indexOf(' :');
-
-  if (~i) {
-    var params = line.slice(1, i);
-    line = line.slice(i + 2);
-  }
+  if (-1 == i) i = line.length;
+  var params = line.slice(1, i);
+  line = line.slice(i + 2);
 
   var msg = {
     prefix: prefix || '',
