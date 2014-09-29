@@ -24,6 +24,12 @@ var parser = new Parser;
 
 client.pipe(parser);
 
+parser.on('data', function(msg){
+  console.log();
+  console.log(msg);
+});
+
+// /!\ message will be deprecated
 parser.on('message', function(msg){
   console.log();
   console.log(msg);
