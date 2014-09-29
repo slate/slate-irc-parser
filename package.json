@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "repository": "slate/slate-irc-parser",
   "description": "Low-level general purpose IRC client",
+  "scripts": {
+    "test": "mocha test"
+  },
   "keywords": [
     "irc",
     "client",
