@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
+var util = require('util');
 var debug = require('debug')('slate-irc-parser');
-var linewise = require('linewise');
 var Stream = require('stream');
 
 /**
@@ -16,43 +16,66 @@ module.exports = Parser;
 /**
  * Initialize IRC parser.
  *
- * @param {Type} name
+ * @param {Object} options
  * @return {Type}
  * @api public
  */
 
-function Parser() {
-  this.writable = true;
-  this.nlstream = linewise.getPerLineBuffer();
-  this.nlstream.on('data', this.online.bind(this));
-  this.nlstream.resume();
+function Parser(options) {
+  Stream.Transform.call(this);
+
+  this._readableState.objectMode = true;
+  this._lineBuffer = [];
+
+  return this;
 }
 
 /**
- * Inherit from `Stream.prototype`.
+ * Inherit from `Transform.prototype`.
  */
 
-Parser.prototype.__proto__ = Stream.prototype;
+util.inherits(Parser, Stream.Transform);
 
 /**
- * Write `chunk`.
+ * Written data
  *
  * @param {Buffer} chunk
- * @api public
- */
-
-Parser.prototype.write = function(chunk){
-  return this.nlstream.write(chunk);
-};
-
-/**
- * Parse lines and emit "message" events.
- *
- * @param {String} line
+ * @param {String} encoding
+ * @param {Function} done
  * @api private
  */
 
-Parser.prototype.online = function(line){
+Parser.prototype._transform = function (chunk, encoding, done) {
+  var lines = chunk.toString('utf8').split('\r\n');
+  var line = '';
+
+  if (this._lineBuffer.length > 0) {
+    this._lineBuffer[this._lineBuffer.length - 1] += lines[0];
+    lines.shift();
+  }
+
+  this._lineBuffer = this._lineBuffer.concat(lines);
+
+  while (this._lineBuffer.length > 1) {
+    line = this._lineBuffer.shift();
+    
+    if (line.length > 0) {
+      if (!this.push(this._online(line))) break;
+    }
+  }
+
+  done();
+};
+
+/**
+ * Parse line to message
+ *
+ * @param {String} line
+ * @return {Object}
+ * @api private
+ */
+
+Parser.prototype._online = function(line) {
   // trim
   debug('line `%s`', line);
   var orig = line = line.trim();
@@ -86,14 +109,24 @@ Parser.prototype.online = function(line){
 
   debug('message %j', msg);
   this.emit('message', msg);
+  return msg;
 };
 
 /**
- * Emit "end".
+ * Written data is consumed
  *
- * @api public
+ * @param {Function} done
+ * @api private
  */
 
-Parser.prototype.end = function(){
-  this.emit('end');
+Parser.prototype._flush = function (done) {
+  while (this._lineBuffer.length > 0) {
+    var line = this._lineBuffer.shift();
+    if (line.length > 0) {
+      if (!this.push(this._online(line))) break;
+    }
+  }
+
+  this._lineBuffer.length = 0;
+  done();
 };

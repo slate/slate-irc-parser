@@ -7,7 +7,7 @@ describe('Parser', function(){
     var parser = new Parser;
     var n = 0;
 
-    parser.on('message', function(msg){
+    parser.on('data', function(msg){
       switch (n++) {
         case 0:
           assert('hitchcock.freenode.net' == msg.prefix);
