@@ -12,12 +12,11 @@
     "test": "mocha"
   },
   "dependencies": {
-    "linewise": "0.0.3",
-    "debug": "~0.7.2"
+    "debug": "^2.2.0",
+    "linewise": "0.0.3"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "mocha": "^2.4.5"
   },
   "license": "MIT"
 }
