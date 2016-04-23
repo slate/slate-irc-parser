@@ -53,9 +53,9 @@ Parser.prototype.write = function(chunk){
  */
 
 Parser.prototype.online = function(line){
-  // trim
+  // Remove a single CR at the end of the line if it does exist
   debug('line `%s`', line);
-  var orig = line = line.trim();
+  var orig = line = line.replace(/\r$/, '');
 
   // prefix
   if (':' == line[0]) {
