@@ -8,6 +8,9 @@
     "client",
     "chat"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "linewise": "0.0.3",
     "debug": "~0.7.2"
