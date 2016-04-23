@@ -1,16 +1,10 @@
+slate-irc-parser [![Build Status]][travis] [![Version]][npm]
+========
+Streaming IRC message parser.
 
-# slate-irc-parser
-
-  Streaming IRC message parser.
-
-## Installation
-
+```bash
+$ npm install --save slate-irc-parser
 ```
-$ npm install slate-irc-parser
-```
-
-## Example
-
 ```js
 var Parser = require('slate-irc-parser');
 var net = require('net');
@@ -30,6 +24,12 @@ parser.on('message', function(msg){
 });
 ```
 
-# License
+--------
 
-  MIT
+MIT License
+
+[Version]: https://img.shields.io/npm/v/slate-irc-parser.svg
+[Build Status]: https://travis-ci.org/slate/slate-irc-parser.svg?branch=master
+
+[npm]: https://npmjs.org/package/slate-irc-parser
+[travis]: https://travis-ci.org/slate/slate-irc-parser
