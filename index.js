@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+const util = require('util');
 var debug = require('debug')('slate-irc-parser');
 var linewise = require('linewise');
 var Stream = require('stream');
@@ -54,7 +55,7 @@ Parser.prototype.write = function(chunk){
 
 Parser.prototype.online = function(line){
   // Remove a single CR at the end of the line if it does exist
-  debug('line `%s`', line);
+  debug('line %s', util.inspect(line));
   var orig = line = line.replace(/\r$/, '');
 
   // prefix
