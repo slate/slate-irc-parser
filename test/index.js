@@ -10,23 +10,23 @@ describe('Parser', function(){
     parser.on('message', function(msg){
       switch (n++) {
         case 0:
-          assert('hitchcock.freenode.net' == msg.prefix);
-          assert('NOTICE' == msg.command);
-          assert('*' == msg.params);
-          assert('*** Looking up your hostname...' == msg.trailing);
+          assert.equal('hitchcock.freenode.net', msg.prefix);
+          assert.equal('NOTICE', msg.command);
+          assert.equal('*', msg.params);
+          assert.equal('*** Looking up your hostname...', msg.trailing);
           assert(msg.string);
           break;
         case 1:
-          assert('' === msg.prefix);
-          assert('ERROR' == msg.command);
-          assert('' === msg.params);
-          assert('Closing Link: 127.0.0.1 (Connection timed out)' == msg.trailing);
+          assert.equal('', msg.prefix);
+          assert.equal('ERROR', msg.command);
+          assert.equal('', msg.params);
+          assert.equal('Closing Link: 127.0.0.1 (Connection timed out)', msg.trailing);
           break;
         case 2:
-          assert('tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net' == msg.prefix);
-          assert('JOIN' == msg.command);
-          assert('#express' == msg.params);
-          assert('' === msg.trailing);
+          assert.equal('tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net', msg.prefix);
+          assert.equal('JOIN', msg.command);
+          assert.equal('#express', msg.params);
+          assert.equal('', msg.trailing);
           done();
           break;
       }
