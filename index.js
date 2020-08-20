@@ -1,18 +1,17 @@
-
 /**
  * Module dependencies.
  */
 
-const util = require('util');
-const debug = require('debug')('slate-irc-parser');
-const linewise = require('linewise');
-const Stream = require('stream');
+const util = require('util')
+const debug = require('debug')('slate-irc-parser')
+const linewise = require('linewise')
+const Stream = require('stream')
 
 /**
  * Expose `Parser`.
  */
 
-module.exports = Parser;
+module.exports = Parser
 
 /**
  * Initialize IRC parser.
@@ -23,17 +22,17 @@ module.exports = Parser;
  */
 
 function Parser() {
-  this.writable = true;
-  this.nlstream = linewise.getPerLineBuffer();
-  this.nlstream.on('data', this.online.bind(this));
-  this.nlstream.resume();
+  this.writable = true
+  this.nlstream = linewise.getPerLineBuffer()
+  this.nlstream.on('data', this.online.bind(this))
+  this.nlstream.resume()
 }
 
 /**
  * Inherit from `Stream.prototype`.
  */
 
-Parser.prototype.__proto__ = Stream.prototype;
+Parser.prototype.__proto__ = Stream.prototype
 
 /**
  * Write `chunk`.
@@ -42,9 +41,9 @@ Parser.prototype.__proto__ = Stream.prototype;
  * @api public
  */
 
-Parser.prototype.write = function(chunk){
-  return this.nlstream.write(chunk);
-};
+Parser.prototype.write = function (chunk) {
+  return this.nlstream.write(chunk)
+}
 
 /**
  * Parse lines and emit "message" events.
@@ -53,44 +52,44 @@ Parser.prototype.write = function(chunk){
  * @api private
  */
 
-Parser.prototype.online = function(line){
+Parser.prototype.online = function (line) {
   // Remove a single CR at the end of the line if it does exist
-  line = line.replace(/\r$/, '');
+  line = line.replace(/\r$/, '')
 
-  debug('line %s', util.inspect(line));
-  const orig = line;
+  debug('line %s', util.inspect(line))
+  const orig = line
 
   // prefix
   let prefix
   if (':' == line[0]) {
-    const i = line.indexOf(' ');
-    prefix = line.slice(1, i);
-    line = line.slice(i + 1);
+    const i = line.indexOf(' ')
+    prefix = line.slice(1, i)
+    line = line.slice(i + 1)
   }
 
   // command
-  let i = line.indexOf(' ');
-  if (-1 == i) i = line.length;
-  const command = line.slice(0, i);
-  line = line.slice(i);
+  let i = line.indexOf(' ')
+  if (-1 == i) i = line.length
+  const command = line.slice(0, i)
+  line = line.slice(i)
 
   // params
-  i = line.indexOf(' :');
-  if (-1 == i) i = line.length;
-  const params = line.slice(1, i);
-  line = line.slice(i + 2);
+  i = line.indexOf(' :')
+  if (-1 == i) i = line.length
+  const params = line.slice(1, i)
+  line = line.slice(i + 2)
 
   const msg = {
     prefix: prefix || '',
     command: command,
     params: params || '',
     trailing: line || '',
-    string: orig
-  };
+    string: orig,
+  }
 
-  debug('message %j', msg);
-  this.emit('message', msg);
-};
+  debug('message %j', msg)
+  this.emit('message', msg)
+}
 
 /**
  * Emit "end".
@@ -98,6 +97,6 @@ Parser.prototype.online = function(line){
  * @api public
  */
 
-Parser.prototype.end = function(){
-  this.emit('end');
-};
+Parser.prototype.end = function () {
+  this.emit('end')
+}
