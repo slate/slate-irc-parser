@@ -17,7 +17,7 @@
     "linewise": "0.0.3"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
+    "mocha": "^8.1.1",
     "prettier": "^2.0.5"
   },
   "license": "MIT",
