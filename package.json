@@ -13,7 +13,7 @@
     "fmt": "prettier --write ."
   },
   "dependencies": {
-    "debug": "^2.2.0",
+    "debug": "^4.1.1",
     "linewise": "0.0.3"
   },
   "devDependencies": {
