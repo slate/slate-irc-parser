@@ -171,6 +171,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "prettier@npm:2.0.5"
+  bin:
+    prettier: bin-prettier.js
+  checksum: d249d89361870a29b20e8b268cb09e908490b8c9e21f70393d12a213701f29ba7e95b7f9ce0ad63929c16ce475176742481911737ae3da4a498873e4a3b90990
+  languageName: node
+  linkType: hard
+
 "sigmund@npm:~1.0.0":
   version: 1.0.1
   resolution: "sigmund@npm:1.0.1"
@@ -185,6 +194,7 @@ __metadata:
     debug: ^2.2.0
     linewise: 0.0.3
     mocha: ^2.4.5
+    prettier: ^2.0.5
   languageName: unknown
   linkType: soft
 

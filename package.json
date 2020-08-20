@@ -9,14 +9,20 @@
     "chat"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "mocha && prettier --check .",
+    "fmt": "prettier --write ."
   },
   "dependencies": {
     "debug": "^2.2.0",
     "linewise": "0.0.3"
   },
   "devDependencies": {
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "prettier": "^2.0.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
 }
