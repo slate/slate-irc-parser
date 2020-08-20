@@ -1,12 +1,11 @@
 import util from 'util'
 import debugModule from 'debug'
 import linewise from 'linewise'
-import { Stream, Duplex } from 'stream'
+import { Writable, Duplex } from 'stream'
 
 const debug = debugModule('slate-irc-parser')
 
-export default class Parser extends Stream {
-  writable: boolean
+export default class Parser extends Writable {
   nlstream: Duplex
 
   /**
@@ -16,7 +15,6 @@ export default class Parser extends Stream {
    */
   constructor() {
     super()
-    this.writable = true
     this.nlstream = linewise.getPerLineBuffer()
     this.nlstream.on('data', this.online.bind(this))
     this.nlstream.resume()
