@@ -1,14 +1,22 @@
 {
   "name": "slate-irc-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Streaming IRC message parser",
   "keywords": [
     "irc",
     "client",
     "chat"
   ],
-  "repository": "slate/slate-irc-parser",
+  "homepage": "https://github.com/slate/slate-irc-parser",
+  "bugs": {
+    "url": "https://github.com/slate/slate-irc-parser/issues"
+  },
   "license": "MIT",
+  "contributors": [
+    "TJ Holowaychuk <tj@apex.sh>",
+    "Hyeon Kim <simnalamburt@gmail.com> (https://hyeon.me)"
+  ],
+  "repository": "slate/slate-irc-parser",
   "dependencies": {
     "debug": "^4.1.1",
     "linewise": "0.0.3"
