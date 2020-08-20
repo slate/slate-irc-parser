@@ -1,4 +1,4 @@
-slate-irc-parser [![Build Status]][travis] [![Version]][npm]
+slate-irc-parser [![Version]][npm]
 ========
 Streaming IRC message parser.
 
@@ -29,7 +29,5 @@ parser.on('message', function(msg){
 MIT License
 
 [Version]: https://img.shields.io/npm/v/slate-irc-parser.svg
-[Build Status]: https://travis-ci.org/slate/slate-irc-parser.svg?branch=master
 
 [npm]: https://npmjs.org/package/slate-irc-parser
-[travis]: https://travis-ci.org/slate/slate-irc-parser
