@@ -1,17 +1,9 @@
-/**
- * Module dependencies.
- */
+import util from 'util'
+import debugModule from 'debug'
+import linewise from 'linewise'
+import Stream from 'stream'
 
-const util = require('util')
-const debug = require('debug')('slate-irc-parser')
-const linewise = require('linewise')
-const Stream = require('stream')
-
-/**
- * Expose `Parser`.
- */
-
-module.exports = Parser
+const debug = debugModule('slate-irc-parser')
 
 /**
  * Initialize IRC parser.
@@ -21,7 +13,7 @@ module.exports = Parser
  * @api public
  */
 
-function Parser() {
+export default function Parser() {
   this.writable = true
   this.nlstream = linewise.getPerLineBuffer()
   this.nlstream.on('data', this.online.bind(this))

@@ -7,8 +7,8 @@ npm install --save slate-irc-parser
 yarn add -D slate-irc-parser
 ```
 ```js
-const Parser = require('slate-irc-parser')
-const net = require('net')
+import Parser from 'slate-irc-parser'
+import net from 'net'
 
 const client = net.connect({
   port: 6667,
