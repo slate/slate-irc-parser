@@ -1,6 +1,6 @@
 {
   "name": "slate-irc-parser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Streaming IRC message parser",
   "keywords": [
     "irc",
@@ -37,6 +37,7 @@
   },
   "main": "dist/slate-irc-parser.js",
   "module": "dist/slate-irc-parser.modern.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/*"
   ],
