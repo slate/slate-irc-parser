@@ -8,3 +8,6 @@
 
 # microbundle
 /dist/
+
+# typescript
+/node_modules/

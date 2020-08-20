@@ -1,19 +1,24 @@
 import util from 'util'
 import debugModule from 'debug'
 import linewise from 'linewise'
-import Stream from 'stream'
+import { Stream, Duplex } from 'stream'
 
 const debug = debugModule('slate-irc-parser')
+
+interface Parser extends Stream {
+  writable: boolean
+  nlstream: Duplex
+
+  write(chunk: Buffer): boolean
+  online(line: String): void
+}
 
 /**
  * Initialize IRC parser.
  *
- * @param {Type} name
- * @return {Type}
  * @api public
  */
-
-export default function Parser() {
+export default function Parser(this: Parser) {
   this.writable = true
   this.nlstream = linewise.getPerLineBuffer()
   this.nlstream.on('data', this.online.bind(this))
@@ -23,7 +28,6 @@ export default function Parser() {
 /**
  * Inherit from `Stream.prototype`.
  */
-
 Parser.prototype.__proto__ = Stream.prototype
 
 /**
@@ -32,8 +36,7 @@ Parser.prototype.__proto__ = Stream.prototype
  * @param {Buffer} chunk
  * @api public
  */
-
-Parser.prototype.write = function (chunk) {
+Parser.prototype.write = function (this: Parser, chunk: Buffer): boolean {
   return this.nlstream.write(chunk)
 }
 
@@ -43,8 +46,7 @@ Parser.prototype.write = function (chunk) {
  * @param {String} line
  * @api private
  */
-
-Parser.prototype.online = function (line) {
+Parser.prototype.online = function (this: Parser, line: String): void {
   // Remove a single CR at the end of the line if it does exist
   line = line.replace(/\r$/, '')
 
@@ -88,7 +90,6 @@ Parser.prototype.online = function (line) {
  *
  * @api public
  */
-
 Parser.prototype.end = function () {
   this.emit('end')
 }

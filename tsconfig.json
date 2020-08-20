@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "noEmit": true,
+
+    // Strict Typecheck
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Module
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Advanced
+    "baseUrl": ".",
+    "paths": {
+      "linewise": ["types/linewise.d.ts"]
+    }
+  },
+  "exclude": ["dist"]
+}
