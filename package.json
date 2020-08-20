@@ -18,7 +18,7 @@
   ],
   "repository": "slate/slate-irc-parser",
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.2.0",
     "linewise": "0.0.3"
   },
   "devDependencies": {
