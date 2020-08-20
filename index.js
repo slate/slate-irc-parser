@@ -4,9 +4,9 @@
  */
 
 const util = require('util');
-var debug = require('debug')('slate-irc-parser');
-var linewise = require('linewise');
-var Stream = require('stream');
+const debug = require('debug')('slate-irc-parser');
+const linewise = require('linewise');
+const Stream = require('stream');
 
 /**
  * Expose `Parser`.
@@ -58,28 +58,29 @@ Parser.prototype.online = function(line){
   line = line.replace(/\r$/, '');
 
   debug('line %s', util.inspect(line));
-  var orig = line;
+  const orig = line;
 
   // prefix
+  let prefix
   if (':' == line[0]) {
-    var i = line.indexOf(' ');
-    var prefix = line.slice(1, i);
+    const i = line.indexOf(' ');
+    prefix = line.slice(1, i);
     line = line.slice(i + 1);
   }
 
   // command
-  var i = line.indexOf(' ');
+  let i = line.indexOf(' ');
   if (-1 == i) i = line.length;
-  var command = line.slice(0, i);
+  const command = line.slice(0, i);
   line = line.slice(i);
 
   // params
-  var i = line.indexOf(' :');
+  i = line.indexOf(' :');
   if (-1 == i) i = line.length;
-  var params = line.slice(1, i);
+  const params = line.slice(1, i);
   line = line.slice(i + 2);
 
-  var msg = {
+  const msg = {
     prefix: prefix || '',
     command: command,
     params: params || '',

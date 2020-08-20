@@ -1,17 +1,17 @@
 
-var Parser = require('..');
-var net = require('net');
+const Parser = require('..');
+const net = require('net');
 
-var client = net.connect({
+const client = net.connect({
   port: 6667,
   host: 'irc.freenode.org'
 });
 
-var parser = new Parser;
+const parser = new Parser;
 
 client.pipe(parser);
 
-parser.on('message', function(msg){
+parser.on('message', (msg) => {
   console.log();
   console.log(msg);
 });

@@ -1,13 +1,13 @@
 
-var Parser = require('..');
-var assert = require('assert');
+const Parser = require('..');
+const assert = require('assert');
 
-describe('Parser', function(){
-  it('should emit "message" events', function(done){
-    var parser = new Parser;
-    var n = 0;
+describe('Parser', () => {
+  it('should emit "message" events', (done) => {
+    const parser = new Parser;
+    let n = 0;
 
-    parser.on('message', function(msg){
+    parser.on('message', (msg) => {
       switch (n++) {
         case 0:
           assert.equal('hitchcock.freenode.net', msg.prefix);

@@ -1,9 +1,9 @@
 
-var Parser = require('..');
+const Parser = require('..');
 
-var parser = new Parser;
+const parser = new Parser;
 
-parser.on('message', function(msg){
+parser.on('message', (msg) => {
   console.log();
   console.log(msg);
 });
