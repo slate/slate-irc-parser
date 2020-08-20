@@ -1,33 +1,33 @@
-slate-irc-parser [![Version]][npm]
+slate-irc-parser [![version] ![downloads]][npm]
 ========
 Streaming IRC message parser.
 
 ```bash
-$ npm install --save slate-irc-parser
+npm install --save slate-irc-parser
+yarn add -D slate-irc-parser
 ```
 ```js
-var Parser = require('slate-irc-parser');
-var net = require('net');
+const Parser = require('slate-irc-parser')
+const net = require('net')
 
-var client = net.connect({
+const client = net.connect({
   port: 6667,
   host: 'irc.freenode.org'
-});
+})
 
-var parser = new Parser;
+const parser = new Parser()
 
-client.pipe(parser);
+client.pipe(parser)
 
-parser.on('message', function(msg){
-  console.log();
-  console.log(msg);
-});
+parser.on('message', (msg) => {
+  console.log(msg)
+})
 ```
 
 --------
 
 MIT License
 
-[Version]: https://img.shields.io/npm/v/slate-irc-parser.svg
-
+[version]: https://badgen.net/npm/v/slate-irc-parser
+[downloads]: https://badgen.net/npm/dt/slate-irc-parser
 [npm]: https://npmjs.org/package/slate-irc-parser
