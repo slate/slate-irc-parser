@@ -82,5 +82,6 @@ export default class Parser extends Writable {
    */
   end() {
     this.emit('end')
+    return this
   }
 }
