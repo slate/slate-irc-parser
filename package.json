@@ -35,7 +35,7 @@
     "fmt": "prettier --write ."
   },
   "main": "dist/slate-irc-parser.js",
-  "module": "dist/slate-irc-parser.modern.js",
+  "module": "dist/slate-irc-parser.modern.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/*"
