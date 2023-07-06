@@ -21,13 +21,13 @@ describe('Parser', () => {
           assert.equal('', msg.params)
           assert.equal(
             'Closing Link: 127.0.0.1 (Connection timed out)',
-            msg.trailing
+            msg.trailing,
           )
           break
         case 2:
           assert.equal(
             'tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net',
-            msg.prefix
+            msg.prefix,
           )
           assert.equal('JOIN', msg.command)
           assert.equal('#express', msg.params)
@@ -38,11 +38,11 @@ describe('Parser', () => {
     })
 
     parser.write(
-      ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n'
+      ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n',
     )
     parser.write('ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n')
     parser.write(
-      ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n'
+      ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n',
     )
   })
 })
