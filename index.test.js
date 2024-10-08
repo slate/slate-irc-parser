@@ -1,8 +1,8 @@
-const Parser = require('..')
-const assert = require('assert')
+import { assert, test } from 'vitest'
+import Parser from './index.ts'
 
-describe('Parser', () => {
-  it('should emit "message" events', (done) => {
+test('should emit "message" events', () =>
+  new Promise((done) => {
     const parser = new Parser()
     let n = 0
 
@@ -44,5 +44,4 @@ describe('Parser', () => {
     parser.write(
       ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n',
     )
-  })
-})
+  }))
