@@ -3,8 +3,7 @@ slate-irc-parser [![version] ![downloads]][npm]
 Streaming IRC message parser.
 
 ```bash
-npm install --save slate-irc-parser
-yarn add -D slate-irc-parser
+pnpm add -D slate-irc-parser
 ```
 ```js
 import Parser from 'slate-irc-parser'
