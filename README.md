@@ -22,6 +22,8 @@ const client = connect({
 client.pipe(parser)
 ```
 
+To see more examples, please check the [`examples`](examples) directory.
+
 --------
 
 MIT License
