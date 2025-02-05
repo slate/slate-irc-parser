@@ -7,20 +7,19 @@ pnpm add -D slate-irc-parser
 ```
 ```js
 import Parser from 'slate-irc-parser'
-import net from 'net'
-
-const client = net.connect({
-  port: 6667,
-  host: 'irc.freenode.org'
-})
+import { connect } from 'node:tls'
 
 const parser = new Parser()
-
-client.pipe(parser)
-
 parser.on('message', (msg) => {
+  console.log()
   console.log(msg)
 })
+
+const client = connect({
+  port: 6697,
+  host: 'irc.libera.chat',
+})
+client.pipe(parser)
 ```
 
 --------

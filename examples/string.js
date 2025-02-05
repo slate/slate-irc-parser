@@ -1,14 +1,16 @@
-const Parser = require('..')
+import Parser from '../dist/slate-irc-parser.modern.mjs'
+
+const lines = [
+  `:molybdenum.libera.chat NOTICE * :*** Checking Ident\r\n`,
+  `:molybdenum.libera.chat NOTICE * :*** Looking up your hostname...\r\n`,
+  `:molybdenum.libera.chat NOTICE * :*** No Ident response\r\n`,
+  `:molybdenum.libera.chat NOTICE * :*** Couldn't look up your hostname\r\n`,
+  `ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n`,
+]
 
 const parser = new Parser()
+parser.on('message', console.log)
 
-parser.on('message', (msg) => {
-  console.log()
-  console.log(msg)
-})
-
-parser.write(
-  ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n',
-)
-parser.write(':hitchcock.freenode.net NOTICE * :*** Checking Ident\r\n')
-parser.write('ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n')
+for (const line of lines) {
+  parser.write(line)
+}

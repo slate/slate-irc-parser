@@ -1,16 +1,11 @@
-const Parser = require('..')
-const net = require('net')
-
-const client = net.connect({
-  port: 6667,
-  host: 'irc.freenode.org',
-})
+import Parser from '../dist/slate-irc-parser.modern.mjs'
+import { connect } from 'node:tls'
 
 const parser = new Parser()
+parser.on('message', console.log)
 
-client.pipe(parser)
-
-parser.on('message', (msg) => {
-  console.log()
-  console.log(msg)
+const client = connect({
+  port: 6697,
+  host: 'irc.libera.chat',
 })
+client.pipe(parser)
