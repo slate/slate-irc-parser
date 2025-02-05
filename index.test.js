@@ -1,47 +1,45 @@
 import { assert, test } from 'vitest'
-import Parser from './index.ts'
+import Parser from './index'
 
-test('should emit "message" events', () =>
-  new Promise((done) => {
-    const parser = new Parser()
-    let n = 0
+const inputs = [
+  ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n',
+  'ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n',
+  ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n',
+]
 
-    parser.on('message', (msg) => {
-      switch (n++) {
-        case 0:
-          assert.equal('hitchcock.freenode.net', msg.prefix)
-          assert.equal('NOTICE', msg.command)
-          assert.equal('*', msg.params)
-          assert.equal('*** Looking up your hostname...', msg.trailing)
-          assert(msg.string)
-          break
-        case 1:
-          assert.equal('', msg.prefix)
-          assert.equal('ERROR', msg.command)
-          assert.equal('', msg.params)
-          assert.equal(
-            'Closing Link: 127.0.0.1 (Connection timed out)',
-            msg.trailing,
-          )
-          break
-        case 2:
-          assert.equal(
-            'tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net',
-            msg.prefix,
-          )
-          assert.equal('JOIN', msg.command)
-          assert.equal('#express', msg.params)
-          assert.equal('', msg.trailing)
-          done()
-          break
-      }
-    })
+const expected = [
+  {
+    prefix: 'hitchcock.freenode.net',
+    command: 'NOTICE',
+    params: '*',
+    trailing: '*** Looking up your hostname...',
+    string: ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...',
+  },
+  {
+    prefix: '',
+    command: 'ERROR',
+    params: '',
+    trailing: 'Closing Link: 127.0.0.1 (Connection timed out)',
+    string: 'ERROR :Closing Link: 127.0.0.1 (Connection timed out)',
+  },
+  {
+    prefix: 'tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net',
+    command: 'JOIN',
+    params: '#express',
+    trailing: '',
+    string:
+      ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express',
+  },
+]
 
-    parser.write(
-      ':hitchcock.freenode.net NOTICE * :*** Looking up your hostname...\r\n',
-    )
-    parser.write('ERROR :Closing Link: 127.0.0.1 (Connection timed out)\r\n')
-    parser.write(
-      ':tjholowaychuk!~tjholoway@S01067cb21b2fd643.gv.shawcable.net JOIN #express\r\n',
-    )
-  }))
+test('should emit "message" events', () => {
+  const parser = new Parser()
+  let n = 0
+  parser.on('message', (msg) => {
+    assert.deepEqual(expected[n++], msg)
+  })
+
+  for (const line of inputs) {
+    parser.write(Buffer.from(line))
+  }
+})
