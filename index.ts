@@ -1,7 +1,8 @@
-import util from 'util'
+import util from 'node:util'
+import { Writable, Duplex } from 'node:stream'
+
 import debugModule from 'debug'
 import linewise from 'linewise'
-import { Writable, Duplex } from 'stream'
 
 const debug = debugModule('slate-irc-parser')
 
