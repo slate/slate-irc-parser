@@ -12,5 +12,5 @@ const parser = new Parser()
 parser.on('message', console.log)
 
 for (const line of lines) {
-  parser.write(line)
+  parser.write(Buffer.from(line))
 }
