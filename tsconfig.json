@@ -14,7 +14,7 @@
 
     // Module
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
 
