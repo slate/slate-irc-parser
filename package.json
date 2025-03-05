@@ -34,5 +34,8 @@
   "module": "dist/slate-irc-parser.modern.mjs",
   "types": "dist/index.d.ts",
   "files": ["dist/*"],
-  "packageManager": "pnpm@10.2.0"
+  "packageManager": "pnpm@10.5.2",
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
+  }
 }
