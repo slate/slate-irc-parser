@@ -14,16 +14,16 @@
   ],
   "repository": "slate/slate-irc-parser",
   "dependencies": {
-    "debug": "^4.3.7",
+    "debug": "^4.4.0",
     "linewise": "0.0.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22",
+    "@types/node": "^22.13.9",
     "microbundle": "^0.15.1",
-    "typescript": "^5.6.2",
-    "vitest": "^3.0.5"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7"
   },
   "scripts": {
     "build": "microbundle -f cjs,modern --target node --compress",
