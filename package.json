@@ -1,6 +1,6 @@
 {
   "name": "slate-irc-parser",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Streaming IRC message parser",
   "keywords": [
     "irc",
