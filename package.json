@@ -2,7 +2,11 @@
   "name": "slate-irc-parser",
   "version": "0.1.6",
   "description": "Streaming IRC message parser",
-  "keywords": ["irc", "client", "chat"],
+  "keywords": [
+    "irc",
+    "client",
+    "chat"
+  ],
   "homepage": "https://github.com/slate/slate-irc-parser",
   "bugs": {
     "url": "https://github.com/slate/slate-irc-parser/issues"
@@ -18,7 +22,7 @@
     "linewise": "0.0.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.3.11",
     "@types/debug": "^4.1.12",
     "@types/node": "^25.0.8",
     "microbundle": "^0.15.1",
@@ -33,6 +37,8 @@
   "main": "dist/slate-irc-parser.js",
   "module": "dist/slate-irc-parser.modern.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "packageManager": "pnpm@10.28.0"
 }
