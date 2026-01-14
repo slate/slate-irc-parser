@@ -24,10 +24,15 @@ client.pipe(parser)
 
 To see more examples, please check the [`examples`](examples) directory.
 
---------
+&nbsp;
 
-MIT License
+--------
+*slate-irc-parser* is primarily distributed under the terms of the [MIT
+license]. See [COPYRIGHT] for details.
 
 [version]: https://badgen.net/npm/v/slate-irc-parser
 [downloads]: https://badgen.net/npm/dt/slate-irc-parser
 [npm]: https://npmjs.org/package/slate-irc-parser
+
+[MIT license]: LICENSE
+[COPYRIGHT]: COPYRIGHT
