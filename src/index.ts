@@ -4,9 +4,8 @@ import util from "node:util";
 import debugModule from "debug";
 import linewise from "linewise";
 
-const debug = debugModule("slate-irc-parser");
-
 export default class Parser extends Writable {
+  static debug: ReturnType<typeof debugModule> = debugModule("slate-irc-parser");
   nlstream: Duplex;
 
   /**
@@ -41,7 +40,7 @@ export default class Parser extends Writable {
     // Remove a single CR at the end of the line if it does exist
     line = line.replace(/\r$/, "");
 
-    debug("line %s", util.inspect(line));
+    Parser.debug("line %s", util.inspect(line));
     const orig = line;
 
     // prefix
@@ -72,7 +71,7 @@ export default class Parser extends Writable {
       string: orig,
     };
 
-    debug("message %j", msg);
+    Parser.debug("message %j", msg);
     this.emit("message", msg);
   }
 
