@@ -1,19 +1,21 @@
-import { Writable, Duplex } from "node:stream";
+import { Writable } from "node:stream";
 import util from "node:util";
 
 import debugModule from "debug";
-import linewise from "linewise";
+
+import LinewiseStream from "./linewise";
 
 export default class Parser extends Writable {
   static debug: ReturnType<typeof debugModule> = debugModule("slate-irc-parser");
-  nlstream: Duplex;
+  private readonly nlstream: LinewiseStream;
 
   /**
    * Initialize IRC parser.
    */
   constructor() {
     super();
-    this.nlstream = linewise.getPerLineBuffer();
+    this.nlstream = new LinewiseStream();
+    this.nlstream.setEncoding("utf8");
     this.nlstream.on("data", this.online.bind(this));
     this.nlstream.resume();
   }

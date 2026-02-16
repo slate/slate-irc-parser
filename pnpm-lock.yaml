@@ -11,9 +11,6 @@ importers:
       debug:
         specifier: ^4.4.3
         version: 4.4.3
-      linewise:
-        specifier: 0.0.3
-        version: 0.0.3
     devDependencies:
       '@types/debug':
         specifier: ^4.1.12
@@ -915,9 +912,6 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  linewise@0.0.3:
-    resolution: {integrity: sha512-8oI90ziJlcTi4k2DnQ0o0Waa2Uk00xbIN8ylvhstEqfJtiRaB4LJ6u8H63If7zTrnnuhCw8SjTJoHf+wLs3ICg==}
-
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
@@ -1795,8 +1789,6 @@ snapshots:
   import-without-cache@0.2.5: {}
 
   jsesc@3.1.0: {}
-
-  linewise@0.0.3: {}
 
   linkify-it@5.0.0:
     dependencies:
