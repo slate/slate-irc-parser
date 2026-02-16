@@ -23,7 +23,7 @@ const client = connect({
 client.pipe(parser);
 ```
 
-To see more examples, please check the [`examples`](examples) directory.
+To see more examples, please check the [`examples`] directory.
 
 &nbsp;
 
@@ -35,5 +35,6 @@ license]. See [COPYRIGHT] for details.
 [version]: https://badgen.net/npm/v/slate-irc-parser
 [downloads]: https://badgen.net/npm/dt/slate-irc-parser
 [npm]: https://npmjs.org/package/slate-irc-parser
+[`examples`]: https://github.com/slate/slate-irc-parser/tree/main/examples
 [MIT license]: LICENSE
 [COPYRIGHT]: COPYRIGHT

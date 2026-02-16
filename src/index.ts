@@ -10,8 +10,6 @@ export default class Parser extends Writable {
 
   /**
    * Initialize IRC parser.
-   *
-   * @api public
    */
   constructor() {
     super();
@@ -24,7 +22,6 @@ export default class Parser extends Writable {
    * Write `chunk`.
    *
    * @param {Buffer} chunk
-   * @api public
    */
   override write(chunk: Buffer): boolean {
     return this.nlstream.write(chunk);
@@ -34,9 +31,8 @@ export default class Parser extends Writable {
    * Parse lines and emit "message" events.
    *
    * @param {String} line
-   * @api private
    */
-  online(line: string): void {
+  private online(line: string): void {
     // Remove a single CR at the end of the line if it does exist
     line = line.replace(/\r$/, "");
 
@@ -77,8 +73,6 @@ export default class Parser extends Writable {
 
   /**
    * Emit "end".
-   *
-   * @api public
    */
   override end(): this {
     this.emit("end");
