@@ -20,11 +20,11 @@
   "files": [
     "dist/*"
   ],
-  "main": "dist/slate-irc-parser.js",
-  "module": "dist/slate-irc-parser.modern.mjs",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "types": "dist/index.d.mts",
+  "exports": "./dist/index.mjs",
   "scripts": {
-    "build": "microbundle -f cjs,modern --target node --compress",
+    "build": "tsdown",
     "ci": "tsc && vitest --run && oxlint && oxfmt --check",
     "fix": "oxlint --fix",
     "fmt": "oxfmt"
@@ -36,9 +36,9 @@
   "devDependencies": {
     "@types/debug": "^4.1.12",
     "@types/node": "^25.0.8",
-    "microbundle": "^0.15.1",
     "oxfmt": "^0.32.0",
     "oxlint": "^1.47.0",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "vitest": "^4.0.17"
   },
