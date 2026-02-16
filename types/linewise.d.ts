@@ -1,5 +1,5 @@
-import { Duplex } from 'node:stream'
+import { Duplex } from "node:stream";
 
-declare module 'linewise' {
-  function getPerLineBuffer(): Duplex
+declare module "linewise" {
+  function getPerLineBuffer(): Duplex;
 }

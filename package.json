@@ -3,9 +3,9 @@
   "version": "0.1.9",
   "description": "Streaming IRC message parser",
   "keywords": [
-    "irc",
+    "chat",
     "client",
-    "chat"
+    "irc"
   ],
   "homepage": "https://github.com/slate/slate-irc-parser",
   "bugs": {
@@ -17,6 +17,18 @@
     "Hyeon Kim <simnalamburt@gmail.com> (https://hyeon.me)"
   ],
   "repository": "slate/slate-irc-parser",
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/slate-irc-parser.js",
+  "module": "dist/slate-irc-parser.modern.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "microbundle -f cjs,modern --target node --compress",
+    "ci": "tsc && vitest --run && oxlint && oxfmt --check",
+    "fix": "oxlint --fix",
+    "fmt": "oxfmt"
+  },
   "dependencies": {
     "debug": "^4.4.3",
     "linewise": "0.0.3"
@@ -25,20 +37,10 @@
     "@types/debug": "^4.1.12",
     "@types/node": "^25.0.8",
     "microbundle": "^0.15.1",
+    "oxfmt": "^0.32.0",
+    "oxlint": "^1.47.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.17"
   },
-  "scripts": {
-    "build": "microbundle -f cjs,modern --target node --compress",
-    "ci": "tsc && vitest --run && echo 'TODO: Run linter & formatter'",
-    "fix": "echo 'TODO: Run linter'",
-    "fmt": "echo 'TODO: Run formatter'"
-  },
-  "main": "dist/slate-irc-parser.js",
-  "module": "dist/slate-irc-parser.modern.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/*"
-  ],
   "packageManager": "pnpm@10.28.0"
 }
