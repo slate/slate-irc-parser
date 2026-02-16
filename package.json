@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "microbundle -f cjs,modern --target node --compress",
-    "test": "tsc && vitest --run && biome format",
+    "ci": "tsc && vitest --run && biome format",
     "fmt": "biome format --write"
   },
   "main": "dist/slate-irc-parser.js",
