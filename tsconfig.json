@@ -28,7 +28,7 @@
   },
   "exclude": ["dist", "docs"],
   "typedocOptions": {
-    "entryPoints": ["./index.ts"],
+    "entryPoints": ["./src/index.ts"],
     "out": "docs"
   }
 }

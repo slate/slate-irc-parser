@@ -17,8 +17,10 @@
     "Jihyeon Kim <simnalamburt@gmail.com> (https://hyeon.me)"
   ],
   "repository": "slate/slate-irc-parser",
+  "source": "src/index.ts",
   "files": [
-    "dist/*"
+    "src",
+    "dist"
   ],
   "type": "module",
   "types": "dist/index.d.mts",
