@@ -1,28 +1,34 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext"],
     "noEmit": true,
+    "skipLibCheck": true,
 
     // Strict Typecheck
     "strict": true,
+    "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
 
     // Module
-    "esModuleInterop": true,
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "preserve",
+    "verbatimModuleSyntax": true,
 
     // Advanced
-    "baseUrl": ".",
+    "declaration": true,
+    "isolatedDeclarations": true,
     "paths": {
-      "linewise": ["types/linewise.d.ts"]
+      "linewise": ["./types/linewise.d.ts"]
     }
   },
-  "exclude": ["dist"]
+  "exclude": ["dist", "docs"],
+  "typedocOptions": {
+    "entryPoints": ["./index.ts"],
+    "out": "docs"
+  }
 }
