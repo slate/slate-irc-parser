@@ -27,7 +27,7 @@ export default class Parser extends Writable {
    * @param {Buffer} chunk
    * @api public
    */
-  write(chunk: Buffer): boolean {
+  override write(chunk: Buffer): boolean {
     return this.nlstream.write(chunk);
   }
 
@@ -81,7 +81,7 @@ export default class Parser extends Writable {
    *
    * @api public
    */
-  end() {
+  override end(): this {
     this.emit("end");
     return this;
   }
