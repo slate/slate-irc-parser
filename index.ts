@@ -37,7 +37,7 @@ export default class Parser extends Writable {
    * @param {String} line
    * @api private
    */
-  online(line: String): void {
+  online(line: string): void {
     // Remove a single CR at the end of the line if it does exist
     line = line.replace(/\r$/, "");
 
