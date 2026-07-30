@@ -38,13 +38,13 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.13",
-    "@types/node": "^25.9.3",
+    "@types/node": "^25.9.5",
     "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0",
-    "tsdown": "^0.22.2",
-    "typedoc": "^0.28.19",
+    "oxlint": "^1.76.0",
+    "tsdown": "^0.22.14",
+    "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "packageManager": "pnpm@11.18.0"
 }
